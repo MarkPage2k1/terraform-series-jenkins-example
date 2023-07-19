@@ -29,5 +29,13 @@ pipeline {
         sh 'terraform apply -auto-approve'
       }
     }
+    stage('Destroy Resources') {
+      input {
+        message "Do you want to proceed for production deployment?"
+      }
+      steps {
+        sh 'terraform destroy -auto-approve'
+      }
+    }
   }
 }
